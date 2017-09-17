@@ -1,0 +1,24 @@
+{% extends 'Templates/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ title }}</h1>
+      {% if author_id == user.id %}
+        <a href="/notes/edit?id={{ id }}" class="btn btn-default btn-xs">Edit</a>
+        <form action="/notes/delete" method="POST" style="display:inline">
+          <input type="hidden" name="cat_id" value="{{ cat_id }}">
+          <input type="hidden" name="cat_title" value="{{ cat_title }}">
+          <input type="hidden" name="id" value="{{ id }}">
+          <button type="submit" class="btn btn-default btn-xs">Delete</button>
+        </form>
+      {% endif %}
+      <hr>
+      <div id="content">{{ content }}</div>
+    </div>
+  </div>
+</div>
+{{ include('Templates/scripts.html') }}
+{{ include('Templates/markdown.html') }}
+{% endblock %}

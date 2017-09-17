@@ -1,0 +1,41 @@
+{% extends 'Templates/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Categories</h1>
+      <p class="lead">Select one or <a href="/categories/add" class="btn btn-default">Add a category</a></p>
+      <hr>
+      <div class="list-group">
+        {% for c in categories %}
+          <div class="list-group-item category" data-id="{{ c.id }}" data-title="{{ c.title }}">{{ c.title }}
+            {% if user %}
+            <div class="pull-right">
+              <a href="/notes/add?id={{ c.id }}&title={{ c.title }}" class="btn btn-default btn-xs">add note</a>
+              <a href="/categories/edit?id={{ c.id }}" class="btn btn-default btn-xs">edit</a>
+              <form style="display:inline;" method="POST" action="/categories/delete">
+                <input type="hidden" name="id" value="{{ c.id }}">
+                <button class="btn btn-default btn-xs" type="submit">delete</button>
+              </form>
+            </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{{ include('Templates/scripts.html') }}
+<script>
+{% if user %}
+  $(function() {
+    $('.list-group-item').click(function() {
+      var id = $(this).data('id');
+      var title = $(this).data('title');
+      window.location = '/categories/read?id=' + id + '&title=' + title;
+    });
+  });
+{% endif %}
+</script>
+{% endblock %}

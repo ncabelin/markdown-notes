@@ -1,0 +1,32 @@
+{% extends 'Templates/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>All Notes</h1>
+      <a href="/categories/index" class="btn btn-default"><i class="fa fa-pencil"></i> Add</a>
+      <hr>
+      {% if notes %}
+        <div class="list-group">
+        {% for n in notes %}
+          <div class="list-group-item" data-id="{{ n.id }}">{{ n.title }}</div>
+        {% endfor %}
+        </div>
+      {% else %}
+        <p>No Notes yet, click Add</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{{ include('Templates/scripts.html') }}
+<script>
+$(function() {
+  $('.list-group-item').click(function() {
+    var id = $(this).data('id');
+    var cat_title = '{{ title }}';
+    window.location = '/notes/read?id=' + id + '&cat_title=' + cat_title;
+  });
+});
+</script>
+{% endblock %}

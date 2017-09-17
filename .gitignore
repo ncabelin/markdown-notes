@@ -1,0 +1,5 @@
+.DS_Store
+/vendor
+/Core/Config.php
+composer.phar
+/logs
