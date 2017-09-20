@@ -24,8 +24,7 @@ h1, #title {
 }
 
 #markdown {
-  font-family: monospace;
-  font-size: 14px;
+  font-family: 'Source Code Pro', monospace;
   background-color: black;
   color: white;
   -webkit-font-smoothing: antialiased;
@@ -37,6 +36,16 @@ h1, #title {
   font-weight: bold;
   padding: 5px;
   width: 100%;
+}
+
+#content img {
+  width: 100%;
+  height: auto;
+}
+
+#preview {
+  height: 500px;
+  overflow-y: auto;
 }
 
 .prettyprint {
