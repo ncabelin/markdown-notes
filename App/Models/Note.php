@@ -119,7 +119,7 @@ class Note extends \Core\Model
 
   public static function allPublic($limit)
   {
-    $sql = "SELECT * FROM note WHERE share = 'y' ORDER BY date_modified LIMIT $limit";
+    $sql = "SELECT * FROM note WHERE share = 'y' ORDER BY date_modified DESC LIMIT $limit";
     $db = static::getDB();
     $stmt = $db->prepare($sql);
     $stmt->execute();
