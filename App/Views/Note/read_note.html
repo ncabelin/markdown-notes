@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
       <h1>{{ title }}</h1>
       {% if author_id == user.id %}
         <a href="/notes/edit?id={{ id }}" class="btn btn-default btn-xs">Edit</a>
